@@ -1,25 +1,294 @@
+```html
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>プライバシー・ポリシー（広告/解析/コメント）</title>
 
-当サイトに掲載されている広告について
+  <style>
+    :root{
+      --bg: #0b1220;
+      --card: rgba(255,255,255,.08);
+      --card2: rgba(255,255,255,.06);
+      --border: rgba(255,255,255,.14);
+      --text: rgba(255,255,255,.92);
+      --muted: rgba(255,255,255,.70);
+      --accent: #79a6ff;
+      --accent2:#6ee7b7;
+      --danger:#fb7185;
+      --shadow: 0 18px 50px rgba(0,0,0,.35);
+      --radius: 18px;
+    }
 
-当サイトでは、第三者配信の広告サービス（Googleアドセンス、A8.net、Amazonアソシエイト ）を利用しています。
-このような広告配信事業者は、ユーザーの興味に応じた商品やサービスの広告を表示するため、当サイトや他サイトへのアクセスに関する情報 『Cookie』(氏名、住所、メール アドレス、電話番号は含まれません) を使用することがあります。
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, "Hiragino Sans", "Noto Sans JP", "Segoe UI", Arial, sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(1200px 700px at 10% 0%, rgba(121,166,255,.25), transparent 55%),
+        radial-gradient(900px 500px at 90% 10%, rgba(110,231,183,.18), transparent 55%),
+        radial-gradient(900px 900px at 50% 120%, rgba(255,255,255,.06), transparent 55%),
+        var(--bg);
+      line-height:1.75;
+    }
 
-当サイトが使用しているアクセス解析ツールについて
+    .wrap{
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 40px 16px 70px;
+    }
 
-当サイトでは、Googleによるアクセス解析ツール「Googleアナリティクス」を利用しています。
-このGoogleアナリティクスはトラフィックデータの収集のためにCookieを使用しています。
-このトラフィックデータは匿名で収集されており、個人を特定するものではありません。
-この機能はCookieを無効にすることで収集を拒否することが出来ますので、お使いのブラウザの設定をご確認ください。
+    header.hero{
+      position: relative;
+      padding: 28px 22px;
+      border-radius: calc(var(--radius) + 6px);
+      background: linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.05));
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    header.hero::before{
+      content:"";
+      position:absolute; inset:-2px;
+      background: radial-gradient(700px 220px at 10% 0%, rgba(121,166,255,.26), transparent 60%),
+                  radial-gradient(700px 220px at 90% 10%, rgba(110,231,183,.18), transparent 60%);
+      pointer-events:none;
+      filter: blur(0px);
+    }
+    .hero-inner{ position:relative; }
 
-当サイトへのコメントについて
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:.5rem;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.14);
+      color: var(--muted);
+      font-size: 12px;
+      letter-spacing: .02em;
+      margin-bottom: 10px;
+    }
+    .dot{
+      width:8px; height:8px; border-radius:50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      box-shadow: 0 0 0 4px rgba(121,166,255,.12);
+    }
+    h1{
+      margin: 0 0 6px;
+      font-size: clamp(20px, 2.5vw, 28px);
+      letter-spacing: .02em;
+    }
+    .lead{
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
 
-当サイトでは、スパム・荒らしへの対応として、コメントの際に使用されたIPアドレスを記録しています。
-これはブログの標準機能としてサポートされている機能で、スパム・荒らしへの対応以外にこのIPアドレスを使用することはありません。
-また、メールアドレスとURLの入力に関しては、任意となっております。
-全てのコメントは管理人が事前にその内容を確認し、承認した上での掲載となりますことをあらかじめご了承下さい。
-加えて、次の各号に掲げる内容を含むコメントは管理人の裁量によって承認せず、削除する事があります。
+    .grid{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+      margin-top: 16px;
+    }
 
-特定の自然人または法人を誹謗し、中傷するもの。
-極度にわいせつな内容を含むもの。
-禁制品の取引に関するものや、他者を害する行為の依頼など、法律によって禁止されている物品、行為の依頼や斡旋などに関するもの。
-その他、公序良俗に反し、または管理人によって承認すべきでないと認められるもの。
+    @media (min-width: 820px){
+      .grid{ grid-template-columns: 1fr 1fr; }
+      .span-2{ grid-column: span 2; }
+    }
+
+    section.card{
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, var(--card), var(--card2));
+      border: 1px solid var(--border);
+      box-shadow: 0 12px 30px rgba(0,0,0,.22);
+      padding: 18px 18px 16px;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    .section-title{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+    h2{
+      margin:0;
+      font-size: 16px;
+      letter-spacing: .02em;
+      display:flex;
+      align-items:center;
+      gap: 10px;
+    }
+    .icon{
+      width: 34px; height: 34px;
+      border-radius: 12px;
+      display:grid;
+      place-items:center;
+      background: rgba(255,255,255,.10);
+      border: 1px solid rgba(255,255,255,.14);
+    }
+    .pill{
+      font-size: 12px;
+      color: var(--muted);
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+      padding: 6px 10px;
+      border-radius: 999px;
+      white-space: nowrap;
+    }
+
+    p{
+      margin: 0 0 10px;
+      color: var(--text);
+    }
+    .muted{ color: var(--muted); }
+
+    .callout{
+      margin-top: 12px;
+      padding: 12px 12px;
+      border-radius: 14px;
+      border: 1px solid rgba(121,166,255,.22);
+      background: rgba(121,166,255,.10);
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .callout strong{ color: var(--text); }
+
+    .list{
+      margin: 10px 0 0;
+      padding-left: 18px;
+      color: var(--muted);
+    }
+    .list li{
+      margin: 8px 0;
+    }
+
+    .danger{
+      border: 1px solid rgba(251,113,133,.26);
+      background: rgba(251,113,133,.08);
+    }
+    .danger .tag{
+      color: rgba(255,255,255,.86);
+      background: rgba(251,113,133,.14);
+      border: 1px solid rgba(251,113,133,.28);
+    }
+
+    footer{
+      margin-top: 18px;
+      color: rgba(255,255,255,.55);
+      font-size: 12px;
+      text-align:center;
+    }
+
+    /* small accessibility niceties */
+    a{ color: var(--accent); text-decoration: none; }
+    a:hover{ text-decoration: underline; }
+  </style>
+</head>
+
+<body>
+  <main class="wrap">
+    <header class="hero">
+      <div class="hero-inner">
+        <div class="badge"><span class="dot"></span>Privacy / Policy</div>
+        <h1>当サイトに掲載されている広告・アクセス解析・コメントについて</h1>
+        <p class="lead">当サイトの広告配信、アクセス解析、コメント機能の取り扱いについてのご案内です。</p>
+      </div>
+    </header>
+
+    <div class="grid">
+      <!-- Ads -->
+      <section class="card">
+        <div class="section-title">
+          <h2>
+            <span class="icon" aria-hidden="true">🧾</span>
+            当サイトに掲載されている広告について
+          </h2>
+          <span class="pill">Ads</span>
+        </div>
+
+        <p>
+          当サイトでは、第三者配信の広告サービス（Googleアドセンス、A8.net、Amazonアソシエイト）を利用しています。
+        </p>
+        <p class="muted">
+          このような広告配信事業者は、ユーザーの興味に応じた商品やサービスの広告を表示するため、
+          当サイトや他サイトへのアクセスに関する情報 <strong>『Cookie』</strong>
+          （氏名、住所、メールアドレス、電話番号は含まれません）を使用することがあります。
+        </p>
+
+        <div class="callout">
+          <strong>補足：</strong> Cookie はブラウザに保存される小さなデータです。必要に応じてブラウザ設定で無効化できます。
+        </div>
+      </section>
+
+      <!-- Analytics -->
+      <section class="card">
+        <div class="section-title">
+          <h2>
+            <span class="icon" aria-hidden="true">📊</span>
+            当サイトが使用しているアクセス解析ツールについて
+          </h2>
+          <span class="pill">Analytics</span>
+        </div>
+
+        <p>
+          当サイトでは、Googleによるアクセス解析ツール「Googleアナリティクス」を利用しています。
+        </p>
+        <p class="muted">
+          このGoogleアナリティクスはトラフィックデータの収集のためにCookieを使用しています。
+          このトラフィックデータは匿名で収集されており、個人を特定するものではありません。
+        </p>
+
+        <div class="callout">
+          <strong>収集を拒否するには：</strong>
+          Cookieを無効にすることで収集を拒否できます。お使いのブラウザの設定をご確認ください。
+        </div>
+      </section>
+
+      <!-- Comments -->
+      <section class="card span-2">
+        <div class="section-title">
+          <h2>
+            <span class="icon" aria-hidden="true">💬</span>
+            当サイトへのコメントについて
+          </h2>
+          <span class="pill">Comments</span>
+        </div>
+
+        <p>
+          当サイトでは、スパム・荒らしへの対応として、コメントの際に使用されたIPアドレスを記録しています。
+          これはブログの標準機能としてサポートされている機能で、スパム・荒らしへの対応以外にこのIPアドレスを使用することはありません。
+        </p>
+        <p class="muted">
+          また、メールアドレスとURLの入力に関しては任意となっております。
+          全てのコメントは管理人が事前にその内容を確認し、承認した上での掲載となりますことをあらかじめご了承下さい。
+        </p>
+
+        <div class="callout danger">
+          <strong class="tag">ご注意：</strong>
+          次の各号に掲げる内容を含むコメントは、管理人の裁量によって承認せず、削除する事があります。
+          <ul class="list">
+            <li>特定の自然人または法人を誹謗し、中傷するもの。</li>
+            <li>極度にわいせつな内容を含むもの。</li>
+            <li>
+              禁制品の取引に関するものや、他者を害する行為の依頼など、法律によって禁止されている物品、行為の依頼や斡旋などに関するもの。
+            </li>
+            <li>その他、公序良俗に反し、または管理人によって承認すべきでないと認められるもの。</li>
+          </ul>
+        </div>
+      </section>
+    </div>
+
+    <footer>
+      <div>© Your Site. All rights reserved.</div>
+    </footer>
+  </main>
+</body>
+</html>
+```
