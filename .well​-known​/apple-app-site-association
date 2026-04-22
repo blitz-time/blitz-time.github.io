@@ -5,7 +5,7 @@
       {
         "appID": "5896X6YKTN.com.blitz-time.ios.universal-link",
         "paths": [
-          "*"
+          "/test"
         ]
       }
     ]
